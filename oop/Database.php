@@ -6,7 +6,7 @@ class Database {
   private $username;
   private $password;
   private $dbName;
-  private $conn = null;
+  public $conn = null;
 
   public function __construct($host, $username, $password, $dbName)
   {
@@ -30,5 +30,10 @@ class Database {
   {
     $res = mysqli_query($this->conn, $sql);
     return mysqli_fetch_all($res) ?? [];
+  }
+
+  public function execute($sql)
+  {
+    return mysqli_query($this->conn, $query);
   }
 }
